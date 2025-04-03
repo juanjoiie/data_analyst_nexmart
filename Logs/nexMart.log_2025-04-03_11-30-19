@@ -1,0 +1,36 @@
+2025-04-03 11:30:19,251 - solutionLogs - DEBUG - Filename: product_properties.csv
+2025-04-03 11:30:19,264 - solutionLogs - DEBUG - Columns in source: 21
+2025-04-03 11:30:19,264 - solutionLogs - DEBUG - Records in source: 430
+2025-04-03 11:30:19,296 - solutionLogs - DEBUG - Headers : Manufacturernumber,Articlenumber,EAN,Technical details,Product category,Technical specifications,Picture normal reduced,Depth m,Width m,Length m,Weight kg,Delivery time days,Type of product,Price quantity,ETIM Features,ETIM,ECLASS Features,ECLASS,PROFICLASS Features,PROFICLASS,Product features
+2025-04-03 11:30:19,296 - solutionLogs - DEBUG - Columns in dataframe: 21
+2025-04-03 11:30:19,314 - solutionLogs - DEBUG - Records in dataframe: 430
+2025-04-03 11:30:19,738 - solutionLogs - DEBUG - Exported filename: /home/jj/Py_Workspace/Output/clean_product_properties.csv
+2025-04-03 11:30:19,739 - solutionLogs - DEBUG - Table: product_properties
+2025-04-03 11:30:19,848 - solutionLogs - DEBUG - Headers : Manufacturernumber,Articlenumber,EAN,Technical_details,Product_category,Technical_specifications,Picture_normal_reduced,Depth_m,Width_m,Length_m,Weight_kg,Delivery_time_days,Type_of_product,Price_quantity,ETIM_Features,ETIM,ECLASS_Features,ECLASS,PROFICLASS_Features,PROFICLASS,Product_features
+2025-04-03 11:30:19,848 - solutionLogs - DEBUG - Columns in dataframe: 21
+2025-04-03 11:30:19,859 - solutionLogs - DEBUG - Records in dataframe: 281
+2025-04-03 11:30:19,865 - solutionLogs - DEBUG - Exported filename: /home/jj/Py_Workspace/Output/analysis_product_properties.csv
+2025-04-03 11:30:19,865 - solutionLogs - DEBUG - Filename: manufacturers.csv
+2025-04-03 11:30:19,866 - solutionLogs - DEBUG - Columns in source: 2
+2025-04-03 11:30:19,866 - solutionLogs - DEBUG - Records in source: 309
+2025-04-03 11:30:19,874 - solutionLogs - DEBUG - Headers : Manufacturernumber,Manufacturername
+2025-04-03 11:30:19,875 - solutionLogs - DEBUG - Columns in dataframe: 2
+2025-04-03 11:30:19,901 - solutionLogs - DEBUG - Records in dataframe: 309
+2025-04-03 11:30:19,985 - solutionLogs - DEBUG - Exported filename: /home/jj/Py_Workspace/Output/clean_manufacturers.csv
+2025-04-03 11:30:19,985 - solutionLogs - DEBUG - Table: manufacturers
+2025-04-03 11:30:20,059 - solutionLogs - DEBUG - Headers : Manufacturernumber,Manufacturername
+2025-04-03 11:30:20,059 - solutionLogs - DEBUG - Columns in dataframe: 2
+2025-04-03 11:30:20,064 - solutionLogs - DEBUG - Records in dataframe: 285
+2025-04-03 11:30:20,067 - solutionLogs - DEBUG - Exported filename: /home/jj/Py_Workspace/Output/analysis_manufacturers.csv
+2025-04-03 11:30:20,068 - solutionLogs - DEBUG - Filename: product_descriptions.csv
+2025-04-03 11:30:20,081 - solutionLogs - DEBUG - Columns in source: 5
+2025-04-03 11:30:20,081 - solutionLogs - DEBUG - Records in source: 470
+2025-04-03 11:30:20,104 - solutionLogs - DEBUG - Headers : Articlenumber,Short description,Short description 2,Long description,Language
+2025-04-03 11:30:20,104 - solutionLogs - DEBUG - Columns in dataframe: 5
+2025-04-03 11:30:20,113 - solutionLogs - DEBUG - Records in dataframe: 470
+2025-04-03 11:30:20,423 - solutionLogs - DEBUG - Exported filename: /home/jj/Py_Workspace/Output/clean_product_descriptions.csv
+2025-04-03 11:30:20,423 - solutionLogs - DEBUG - Table: product_descriptions
+2025-04-03 11:30:20,510 - solutionLogs - DEBUG - Headers : Articlenumber,Short_description,Short_description_2,Long_description,Language
+2025-04-03 11:30:20,510 - solutionLogs - DEBUG - Columns in dataframe: 5
+2025-04-03 11:30:20,517 - solutionLogs - DEBUG - Records in dataframe: 470
+2025-04-03 11:30:20,522 - solutionLogs - DEBUG - Exported filename: /home/jj/Py_Workspace/Output/analysis_product_descriptions.csv

@@ -1,0 +1,116 @@
+WITH data_quality_products AS (
+SELECT 
+p.Manufacturernumber,
+d.Articlenumber,
+d.Language,
+d.DQ_Short_Desc,
+d.DQ_Short_Desc_2, 
+d.DQ_Long_Desc,
+p.DQ_EAN,
+p.DQ_Technical_details,
+p.DQ_Product_category,
+p.DQ_Technical_specifications,
+p.DQ_Picture_normal_reduced,
+p.DQ_Depth_m,
+p.DQ_Width_m,
+p.DQ_Length_mv,
+p.DQ_Weight_kg,
+p.DQ_Delivery_time_days,
+p.DQ_Type_of_product,
+p.DQ_Price_quantity,
+p.DQ_ETIM_Features,
+p.DQ_ETIM,
+p.DQ_ECLASS_Features,
+p.DQ_ECLASS,
+p.DQ_PROFICLASS_Features,
+p.DQ_PROFICLASS,
+p.DQ_Product_features
+FROM descriptions_data_quality d
+INNER JOIN properties_data_quality p
+ON d.Articlenumber = p.Articlenumber
+WHERE d.Language = 'de'
+),
+data_validation_products AS (
+  SELECT
+  m.Manufacturername,
+  COUNT(d.Articlenumber) AS Total_Articles,
+  SUM(d.DQ_Short_Desc) AS DQ_Short_Desc,
+  SUM(d.DQ_Short_Desc_2) AS DQ_Short_Desc_2,
+  SUM(d.DQ_Long_Desc) AS DQ_Long_Desc,
+  SUM(d.DQ_EAN) AS DQ_EAN,
+  SUM(d.DQ_Technical_details) AS DQ_Technical_details,
+  SUM(d.DQ_Product_category) AS DQ_Product_category,
+  SUM(d.DQ_Technical_specifications) AS DQ_Technical_specifications,
+  SUM(d.DQ_Picture_normal_reduced) AS DQ_Picture_normal_reduced,
+  SUM(d.DQ_Depth_m) AS DQ_Depth_m,
+  SUM(d.DQ_Width_m) AS DQ_Width_m,
+  SUM(d.DQ_Length_mv) AS DQ_Length_mv,
+  SUM(d.DQ_Weight_kg) AS DQ_Weight_kg,
+  SUM(d.DQ_Delivery_time_days) AS DQ_Delivery_time_days,
+  SUM(d.DQ_Type_of_product) AS DQ_Type_of_product,
+  SUM(d.DQ_Price_quantity) AS DQ_Price_quantity,
+  SUM(d.DQ_ETIM_Features) AS DQ_ETIM_Features,
+  SUM(d.DQ_ETIM) AS DQ_ETIM,
+  SUM(d.DQ_ECLASS_Features) AS DQ_ECLASS_Features,
+  SUM(d.DQ_ECLASS) AS DQ_ECLASS,
+  SUM(d.DQ_PROFICLASS_Features) AS DQ_PROFICLASS_Features,
+  SUM(d.DQ_PROFICLASS) AS DQ_PROFICLASS,
+  SUM(d.DQ_Product_features) AS DQ_Product_features
+  FROM data_quality_products d
+  INNER JOIN manufacturers m
+  ON m.Manufacturernumber = d.Manufacturernumber
+  GROUP BY m.Manufacturername
+)
+
+SELECT
+  Manufacturername,
+  Total_Articles,
+  ROUND(CAST(DQ_Short_Desc AS REAL) / Total_Articles, 5) AS Short_Desc,
+  ROUND(CAST(DQ_Short_Desc_2 AS REAL) / Total_Articles, 5) AS Short_Desc_2,
+  ROUND(CAST(DQ_Long_Desc AS REAL) / Total_Articles, 5) AS Long_Desc,
+  ROUND(CAST(DQ_EAN AS REAL) / Total_Articles, 5) AS EAN,
+  ROUND(CAST(DQ_Technical_details AS REAL) / Total_Articles, 5) AS Technical_details,
+  ROUND(CAST(DQ_Product_category AS REAL) / Total_Articles, 5) AS Product_category,
+  ROUND(CAST(DQ_Technical_specifications AS REAL) / Total_Articles, 2) AS Technical_specifications,
+  ROUND(CAST(DQ_Picture_normal_reduced AS REAL) / Total_Articles, 2) AS Picture_normal_reduced,
+  ROUND(CAST(DQ_Depth_m AS REAL) / Total_Articles, 5) AS Depth_m,
+  ROUND(CAST(DQ_Width_m AS REAL) / Total_Articles, 5) AS Width_m,
+  ROUND(CAST(DQ_Length_mv AS REAL) / Total_Articles, 5) AS Length_mv,
+  ROUND(CAST(DQ_Weight_kg AS REAL) / Total_Articles, 5) AS Weight_kg,
+  ROUND(CAST(DQ_Delivery_time_days AS REAL) / Total_Articles,5) AS Delivery_time_days,
+  ROUND(CAST(DQ_Type_of_product AS REAL) / Total_Articles, 5) AS Type_of_product,
+  ROUND(CAST(DQ_Price_quantity AS REAL) / Total_Articles, 5) AS Price_quantity,
+  ROUND(CAST(DQ_ETIM_Features AS REAL) / Total_Articles, 5) AS ETIM_Features,
+  ROUND(CAST(DQ_ETIM AS REAL) / Total_Articles, 5) AS ETIM,
+  ROUND(CAST(DQ_ECLASS_Features AS REAL) / Total_Articles, 5) AS ECLASS_Features,
+  ROUND(CAST(DQ_ECLASS AS REAL) / Total_Articles, 2) AS ECLASS,
+  ROUND(CAST(DQ_PROFICLASS_Features AS REAL) / Total_Articles, 5) AS ROFICLASS_Features,
+  ROUND(CAST(DQ_PROFICLASS AS REAL) / Total_Articles, 5) AS PROFICLASS,
+  ROUND(CAST(DQ_Product_features AS REAL) / Total_Articles, 5) AS Product_features
+FROM data_validation_products
+UNION
+SELECT 'Total' AS Manufacturernumber, 
+	SUM(Total_Articles) AS Total_Articles, 
+        SUM(DQ_Short_Desc) AS Short_Desc,
+        SUM(DQ_Short_Desc_2) AS Short_Desc_2,
+        SUM(DQ_Long_Desc) AS Long_Desc,
+        SUM(DQ_EAN) AS EAN,
+        SUM(DQ_Technical_details) AS Technical_details,
+        SUM(DQ_Product_category) AS Product_category,
+        SUM(DQ_Technical_specifications) AS Technical_specifications,
+        SUM(DQ_Picture_normal_reduced) AS Picture_normal_reduced,
+        SUM(DQ_Depth_m) AS Depth_m,
+        SUM(DQ_Width_m) AS Width_m,
+        SUM(DQ_Length_mv) AS Length_mv,
+        SUM(DQ_Weight_kg) AS Weight_kg,
+        SUM(DQ_Delivery_time_days) AS Delivery_time_days,
+        SUM(DQ_Type_of_product) AS Type_of_product,
+        SUM(DQ_Price_quantity) AS Price_quantity,
+        SUM(DQ_ETIM_Features) AS ETIM_Features,
+        SUM(DQ_ETIM) AS ETIM,
+        SUM(DQ_ECLASS_Features) AS ECLASS_Features,
+        SUM(DQ_ECLASS) AS ECLASS,
+        SUM(DQ_PROFICLASS_Features) AS PROFICLASS_Features,
+        SUM(DQ_PROFICLASS) AS PROFICLASS,
+        SUM(DQ_Product_features) AS Product_features
+FROM data_validation_products
