@@ -36,6 +36,8 @@
   |FISCHER|	                3|	                  9|	                 5|
   |FEIN|	                   2|                   9|	                96|
 
+  * The biggest manufacturers with potential in their data quality are Bosch and Fischer, even thought the number of product are different, most of their values remain populated with data, on the other side, Fein could improve its data quality by making few adjustments in some product desctiption.
+
 # Question 2
 
   |Manufacturername|	   Total_Articles|	    Short Descriptions|	      Long Descriptions|	    Properties Technical Details|	Properties Price Quantity|
@@ -46,5 +48,13 @@
   |GUSTAV KLAUKE GMBH|	  40|	             1|	          1|	              1|	              1|
   |ROTHENBERGER|	        23|	             1|	          1|	              1|	              1|
   |Total|	                281|	            278|	         280|	           279|	           281|
+
+* Mostly the fields with good data quality are the same in all maufacturers.
+  * Product description -> "Short Description" and "Long Description" are almost 100% for almost all of the manufacturer. Only Bosch contains less data, but with missing data from 1% to 3% only.
+  * Product properties -> "Technical Details" and "Price Quantity" are full of good data quality with ~2% missing values for Bosch only ('Technical Details'). It is important to highlight that 'Technical Details' provides key information regarding the products in order to be used for analysis porpuses.
+     
+  * Exception: The field "Picture normal reduced" (URL) is 100% populated for Bosh manufacturer compared to the other manufacturers.
+
+# Additional insights
 
 # Bonus
