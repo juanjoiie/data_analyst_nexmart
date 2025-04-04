@@ -57,6 +57,37 @@
 
 # Additional insights
 
+- There are 20 products which have the same id becaue they are duplicated in 'de' and 'en' (I have to define Language as second PK to avoid PK violation)
+  ```js
+	SELECT 
+	m.Manufacturername,
+	CASE WHEN p.ETIM = '' THEN 'NO' ELSE 'YES' END AS ETIM,
+	CASE WHEN p.ETIM_Features = '' THEN 'NO' ELSE 'YES' END AS ETIM_Features,
+	COUNT(DISTINCT p.Articlenumber) AS 'Total Articles'
+	FROM product_properties p
+	INNER JOIN manufacturers m
+	ON p.Manufacturernumber = m.Manufacturernumber
+	GROUP BY m.Manufacturername,
+	CASE WHEN p.ETIM = 'NO' THEN 1 ELSE 'YES' END,
+	CASE WHEN p.ETIM_Features = 'NO' THEN 'YES' ELSE 0 END
+	ORDER BY 4 DESC
+```
+- Gustav Klauke Gmbh is the only manufacturer who contains ETIM and ETIM_Features data, it might be interesting to ask the reason of it. I would ask the business people about the technical or business reason of it in order to add/remove this manufacturer in a deeper analysis.
+
+  ```js
+      SELECT 
+      m.Manufacturername,
+      CASE WHEN p.ETIM = '' THEN 'NO' ELSE 'YES' END AS ETIM,
+      CASE WHEN p.ETIM_Features = '' THEN 'NO' ELSE 'YES' END AS ETIM_Features,
+      COUNT(DISTINCT p.Articlenumber) AS 'Total Articles'
+      FROM product_properties p
+      INNER JOIN manufacturers m
+      ON p.Manufacturernumber = m.Manufacturernumber
+      GROUP BY m.Manufacturername,
+      CASE WHEN p.ETIM = 'NO' THEN 1 ELSE 'YES' END,
+      CASE WHEN p.ETIM_Features = 'NO' THEN 'YES' ELSE 0 END
+      ORDER BY 4 DESC
+ ```
 # Bonus
 - Manufacturer information:
   * The manufacturer table/file should have only 1 key per manufacturer and their names should be normalized plus a creation and updated date to keep control of the changes.
