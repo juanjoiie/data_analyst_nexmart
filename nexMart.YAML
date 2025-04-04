@@ -1,0 +1,16 @@
+# Logging configuration parameters
+LOG:
+  pathname: Logs/
+  filename: nexMart.log
+
+# Input configuration parameters
+INPUT:
+  pathname: Input/
+  extension: .csv
+
+# Output configuration parameters
+OUTPUT:
+  pathname: Output/
+
+ANALYSIS:
+  tables: [manufacturers, product_descriptions, product_properties]
