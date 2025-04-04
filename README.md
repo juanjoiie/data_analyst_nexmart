@@ -17,7 +17,7 @@
 - SQL scripts
   * Source Folder
     * DB -> NexMartDB_manufacturers.sql (Manufacturers table CREATE and INSERT statement from pipeline exported file)
-    v DB -> NexMartDB_product_descriptions.sql (Product descriptions table CREATE and INSERT statement from pipeline exported file)
+    * DB -> NexMartDB_product_descriptions.sql (Product descriptions table CREATE and INSERT statement from pipeline exported file)
     * DB -> NexMartDB_product_properties.sql (Product properties table CREATE and INSERT statement from pipeline exported file)
   * Solution Folder
     * SQL -> SQL_Temp_Tables.sql (SQL query to create temporary tables to be used to answer the assignment questions)
@@ -59,12 +59,12 @@
 
 # Bonus
 - Manufacturer information:
- * The manufacturer table/file should have only 1 key per manufacturer and their names should be normalized plus a creation and updated date to keep control of the changes.
+  * The manufacturer table/file should have only 1 key per manufacturer and their names should be normalized plus a creation and updated date to keep control of the changes.
 - Product desciption
- * The product description should have the Language field has a 2 primery key because the records can be duplicated in the "Articlenumber" PK. (e.g. The current sample file has 6 records which are duplicated due to the description is transalted to English ('en') and the orginal ('de' is also there)
+  * The product description should have the Language field has a 2 primery key because the records can be duplicated in the "Articlenumber" PK. (e.g. The current sample file has 6 records which are duplicated due to the description is transalted to English ('en') and the orginal ('de' is also there)
 - Product properties   
- * The product property is missing key information from columns which can be very useful for deeper analysis and break-down structure (e.g. Product category and Technical specifications) and the field 'EAN' might be important to show a valid product in the market but for some product this id does not exist.
- * The product table should contain the unique manufacturer number and in case this is different it should specifiy in the manufacturer table the difference of it (e.g. location, branch, distribution center, etc)
- * The product table should act as a dimension table which contains the key id to connect to the different fact table
+  * The product property is missing key information from columns which can be very useful for deeper analysis and break-down structure (e.g. Product category and Technical specifications) and the field 'EAN' might be important to show a valid product in the market but for some product this id does not exist.
+  * The product table should contain the unique manufacturer number and in case this is different it should specifiy in the manufacturer table the difference of it (e.g. location, branch, distribution center, etc)
+  * The product table should act as a dimension table which contains the key id to connect to the different fact table
 - Additional data
- * If it was a real proyect I would include fact tables from a model which contain the product data to work with prices before and after taxation, branches data to work with logistic and distribution data ad location data to work with countries where the products are made.
+  * If it was a real proyect I would include fact tables from a model which contain the product data to work with prices before and after taxation, branches data to work with logistic and distribution data ad location data to work with countries where the products are made.
